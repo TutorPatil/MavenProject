@@ -1,0 +1,19 @@
+<suite name="ActiTimeTests" verbose="1" >
+
+ <listeners>
+    <listener class-name="com.selenium.base.BaseClass" />   
+  </listeners>
+
+
+  <test name="SmokeSuite" >    
+           
+    <classes>
+    	<class name="com.selenium.tests.Login"/>
+  </classes>
+
+ </test> 
+ 
+ 
+ 
+ 
+</suite>
