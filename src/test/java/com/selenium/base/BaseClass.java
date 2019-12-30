@@ -111,7 +111,7 @@ public class BaseClass implements ITestListener{
 		driver.get(url);
 	}
 	
-	//@AfterMethod(alwaysRun=true)
+	@AfterMethod(alwaysRun=true)
 	public static void closeBrowser()
 	{
 		writeLogs(" This method will run after every @Test ");
