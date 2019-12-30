@@ -121,6 +121,7 @@ public class BaseClass implements ITestListener{
 		driver.close();
 	}
 	
+	// Adding another comment to test SCM Polling
 	public static void captureScreenshot(String fileName)
 	
 	{		
