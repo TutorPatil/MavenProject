@@ -111,6 +111,8 @@ public class BaseClass implements ITestListener{
 		driver.get(url);
 	}
 	
+	// Adding a comment to test pollings
+	
 	@AfterMethod(alwaysRun=true)
 	public static void closeBrowser()
 	{
