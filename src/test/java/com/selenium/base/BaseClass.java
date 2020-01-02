@@ -19,6 +19,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -104,6 +105,13 @@ public class BaseClass implements ITestListener{
 		
 			System.setProperty("webdriver.gecko.driver", "./src/test/utilities/geckodriver.exe");		
 			driver = new FirefoxDriver();
+		
+		}
+		else if (browser.equalsIgnoreCase("edge"))
+		{
+		
+			//System.setProperty("webdriver.edge.driver", "./src/test/utilities/msedgedriver.exe");		
+			driver = new EdgeDriver();
 		
 		}
 		
