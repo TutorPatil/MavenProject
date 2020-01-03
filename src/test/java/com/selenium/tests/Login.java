@@ -41,8 +41,11 @@ public class Login extends BaseClass{
 		String password = testDataMap.get("Login$Password_EditBox");
 		
 		boolean result = CommonLibrary.launchLoginToActiTime(userName, password);
-		Assert.assertTrue(result, "fail" );
+		Assert.assertFalse(result, "fail" );
 	
 	}
+	
+	
+	
 
 }
