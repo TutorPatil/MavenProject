@@ -6,7 +6,7 @@ I will add the details steps to use this project.
 
 This project has everything integrated 
 
-It has TestNG, Maven, Exten Report, GIT everything integrated...
+It has TestNG, Maven, Extent Report, GIT everything integrated...
 
 It also has code to Read data from MySQL DB.
 
