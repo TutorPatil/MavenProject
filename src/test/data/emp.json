@@ -1,16 +1,31 @@
-[
-    {
-        "employee": {
-            "firstName": "Lokesh",
-            "lastName": "Gupta",
-            "website": "howtodoinjava.com"
-        }
-    },
-    {
-        "employee": {
-            "firstName": "Brian",
-            "lastName": "Schultz",
-            "website": "example.com"
-        }
-    }
-]
+{  
+
+  "employee1":{
+  
+        "firstName": "Ramu",
+        "lastName": "Gupta",
+        "age":20,
+        "isMarried":false,        
+        "interests":[
+        	"reading",
+        	"dancing",
+        	"singing"        
+        ]       
+     
+ },
+ 
+ "employee2":{
+  
+        "firstName": "Shamu",
+        "lastName": "Patel",
+        "age":30,
+        "isMarried":true,        
+        "interests":[
+        	"reading",
+        	"cooking"        	        
+        ]       
+     
+ }
+ 
+ 
+ }
