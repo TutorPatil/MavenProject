@@ -23,7 +23,7 @@ public class CommonLibrary extends BaseClass{
 		
 		driver.findElement(By.xpath(locatorMap.get("Login$Ok_Button"))).click();
 				
-		Thread.sleep(9000);
+		Thread.sleep(2000);
 		
 		WebElement logoutLink =	driver.findElement(By.xpath(locatorMap.get("Home$Logout_Link")));
 			
