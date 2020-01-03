@@ -31,7 +31,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
-
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.google.common.io.Files;
 
 public class BaseClass implements ITestListener{
@@ -45,6 +49,10 @@ public class BaseClass implements ITestListener{
 	
 	//public static Map<String,Object> hm = new HashMap<String,Object>();
 	
+	
+	public static ExtentHtmlReporter reporter ;
+	public static ExtentReports extent = new ExtentReports();
+	public static ExtentTest elogger ;	
 	
 	public static void writeLogs(String msg)
 	{
@@ -60,6 +68,7 @@ public class BaseClass implements ITestListener{
 		driver.findElement(By.xpath(s1)).click();
 		*/
 		logger.info(msg);
+		elogger.log(Status.INFO, msg);
 		
 	}
 	
@@ -68,6 +77,7 @@ public class BaseClass implements ITestListener{
 		String s = Arrays.toString(t.getStackTrace());		
 		String s1 = s.replaceAll(",", "\n");		
 		logger.error(s1);
+		elogger.log(Status.FAIL, "The test case Failed the exception captured is "+s1);
 		
 	}
 	
@@ -137,6 +147,7 @@ public class BaseClass implements ITestListener{
 		File dest = new File("./src/test/results/"+fileName+".png");
 			
 		try {
+			elogger.fail(fileName,MediaEntityBuilder.createScreenCaptureFromPath(dest.getAbsolutePath()).build());
 			Files.copy(src, dest);
 		} catch (IOException e) {			
 			e.printStackTrace();
@@ -298,12 +309,18 @@ public class BaseClass implements ITestListener{
 	
 	public void onFinish(ITestContext arg0) {
 		writeLogs("****** This method will run after the suite*****");
-		
+		extent.flush();
 	}
 
 
 	
 	public void onStart(ITestContext arg0) {
+		
+		File f = new File("./src/test/results/results.html");			
+		reporter = new ExtentHtmlReporter(f);
+		extent.attachReporter(reporter);
+		elogger = extent.createTest("Initialization Steps");
+		
 	
 		writeLogs("****** This method will run before the suite*****");
 		try {
@@ -332,6 +349,7 @@ public class BaseClass implements ITestListener{
 			writeResultsToFile(arg0.getName(), "Failed!!");
 			captureScreenshot(arg0.getName());
 			writeErrorLogs(arg0.getThrowable());
+			elogger.log(Status.FAIL, "The test case by name "+arg0.getName()+" is Failed!!");
 		} catch (IOException e) {		
 			e.printStackTrace();
 		}
@@ -348,6 +366,8 @@ public class BaseClass implements ITestListener{
 
 	
 	public void onTestStart(ITestResult arg0) {
+		extent.flush();
+		elogger = extent.createTest(arg0.getName());
 		writeLogs("The test case by name "+arg0.getName()+" is getting started");
 		
 	}
@@ -358,6 +378,7 @@ public class BaseClass implements ITestListener{
 		writeLogs("The test case by name "+arg0.getName()+" is Pass");
 		try {
 			writeResultsToFile(arg0.getName(), "Pass");
+			elogger.log(Status.PASS, "The test case by name "+arg0.getName()+" is getting Passed");
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
