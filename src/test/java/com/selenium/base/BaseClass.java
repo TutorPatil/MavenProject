@@ -98,7 +98,7 @@ public class BaseClass implements ITestListener{
 	public static void launchBrowser() throws IOException
 	{
 		writeLogs(" This method will run before every @Test ");
-		String url = getConfigData("url");
+		String url = "https://demo.actitime.com/login.do";
 		
 		String browser = getConfigData("browser");
 		
