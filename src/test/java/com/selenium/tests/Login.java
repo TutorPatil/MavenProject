@@ -45,7 +45,16 @@ public class Login extends BaseClass{
 	
 	}
 	
+	@Test
+	public static void login_004() throws Exception
+	{				
+		String userName = testDataMap.get("Login$UserName_EditBox");		
+		String password = testDataMap.get("Login$Password_EditBox");
+		
+		boolean result = CommonLibrary.launchLoginToActiTime(userName, password);
+		Assert.assertFalse(result, "fail" );
 	
+	}
 	
 
 }
